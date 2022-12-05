@@ -1,0 +1,196 @@
+console.log("working")
+
+const canva = document.getElementById("canva")
+const context = canva.getContext("2d")
+
+const height = canva.width = 400;
+const width = canva.height = 400;
+
+
+console.dir(canva,context)
+
+
+
+context.clearRect(0,0,width,height)
+context.fillRect(0,0,width/25,height/25);
+
+let x = 0;
+let y = 0;
+
+let dirs = {
+    ArrowRight: false,
+    ArrowLeft: false,
+    ArrowUp: false,
+    ArrowDown: false
+}
+
+let cts = {
+    ArrowRight: 0,
+    ArrowLeft: 0,
+    ArrowUp: 0,
+    ArrowDown: 0
+}
+
+let interval;
+
+// for(let i =0; i<16; i++){
+//     context.clearRect(0,0,width,height)
+//     context.fillRect(x=(x+25),0,width/25,height/25); 
+//     console.log(i,x)  
+// }
+
+// let interval =  setInterval(
+// function(){
+//     context.clearRect(0,0,width,height)
+//     context.fillRect(x=(x+16),0,width/25,height/25);
+//     console.log(x)
+//     if(x==384){clearInterval(interval)}
+// }
+// ,100)
+
+function gameOver(){
+    clearInterval(interval)
+    context.fillText("gameOver",width/50,height/50)
+}
+
+
+
+window.addEventListener("keydown",function(e){
+    let key  = e.key
+    console.log(key)
+
+
+    if(key == "ArrowLeft"){ 
+        
+        dirs.ArrowLeft = true
+        dirs.ArrowRight = false
+        cts.ArrowLeft++;
+
+        cts.ArrowDown = 0
+        cts.ArrowUp = 0
+        cts.ArrowRight = 1
+
+        dirs.ArrowDown = false
+        dirs.ArrowUp = false
+
+        if(cts.ArrowLeft == 1){
+        clearInterval(interval)}
+        
+
+        if(dirs.ArrowLeft == true && cts.ArrowLeft==1){
+            interval =  setInterval(
+                function(){
+                    context.clearRect(0,0,width,height)
+                    context.fillRect(x,y,width/25,height/25);
+                    console.log(x,y,interval)
+                    if(x==384||x==0){clearInterval(interval)}
+                    if(x>0) x = x-16;
+                }
+            ,100)
+        }
+
+    }
+
+    if(key == "ArrowRight"){
+        
+        dirs.ArrowRight = true
+        dirs.ArrowLeft = false
+        cts.ArrowRight++;
+
+        cts.ArrowDown = 0
+        cts.ArrowUp = 0
+        cts.ArrowLeft = 1
+
+        dirs.ArrowDown = false
+        dirs.ArrowUp = false
+
+        if(cts.ArrowRight == 1){
+        clearInterval(interval)}
+        
+
+        if(dirs.ArrowRight == true && cts.ArrowRight==1){
+            interval =  setInterval(
+                function(){
+                    context.clearRect(0,0,width,height)
+                    context.fillRect(x,y,width/25,height/25);
+                    console.log(x,y,interval)
+                    if(x==384){clearInterval(interval)}
+                    if(x<384) x = x+16;
+                }
+            ,100)
+        }
+        
+    }
+
+    if(key == "ArrowUp"){
+
+        dirs.ArrowUp = true
+        dirs.ArrowDown = false
+        cts.ArrowUp++;
+
+        cts.ArrowRight = 0
+        cts.ArrowLeft = 0
+        cts.ArrowDown = 1
+
+        dirs.ArrowLeft = false
+        dirs.ArrowRight = false
+
+        if(cts.ArrowUp==1){
+        clearInterval(interval)}
+
+        if(dirs.ArrowUp == true && cts.ArrowUp == 1){
+            interval =  setInterval(
+                function(){
+                    context.clearRect(0,0,width,height)
+                    context.fillRect(x,y,width/25,height/25);
+                    console.log(x,y,interval)
+                    if(y==0){clearInterval(interval)}
+                    if(y>0) y = y-16;
+                }
+            ,100)
+        }
+
+    }
+    if(key == "ArrowDown"){
+
+        dirs.ArrowDown = true
+        dirs.ArrowUp = false
+        cts.ArrowDown++;
+
+        cts.ArrowRight = 0
+        cts.ArrowLeft=0
+        cts.ArrowUp = 1
+
+        dirs.ArrowLeft = false
+        dirs.ArrowRight = false
+
+        if(cts.ArrowDown==1){
+        clearInterval(interval)}
+
+        if(dirs.ArrowDown == true && cts.ArrowDown == 1){
+            interval =  setInterval(
+                function(){
+                    context.clearRect(0,0,width,height)
+                    context.fillRect(x,y,width/25,height/25);
+                    console.log(x,y,interval)
+                    if(y==384){clearInterval(interval)}
+                    if(y<384) y = y+16;
+                }
+            ,100)
+        }
+
+
+    }
+
+})
+
+
+// let interval =  setInterval(
+//     function(){
+//         context.clearRect(0,0,width,height)
+//         context.fillRect(x,y,width/25,height/25);
+//         console.log(x,y,interval)
+//         if(x==384){clearInterval(interval)}
+//         if(x<384) x = x+16;
+//     }
+// ,100)

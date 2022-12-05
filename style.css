@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    color: whitesmoke;
+}
+
+
+body{
+    background-color: #1c1c1c;
+    /* width: 100vw; */
+    /* height: 100vh;     */
+    /* position: relative; */
+    /* overflow: hidden; */
+}
+
+
+div#container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 100%;
+    max-height: 100%;
+}
+
+canvas{
+    background-color: #022A2D;
+    position: relative;
+    /* overflow: scroll; */
+    max-width: 100%;
+    /* max-height: 100%; */
+}
+
+div#score{
+    font-family: monospace;
+    font-size: 32px;
+    color: orange;
+}
